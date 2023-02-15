@@ -12,7 +12,7 @@ double rpm = 0;
 int oldtime=0;
 int time;
 const int holdDia = 457;
-const int tachWidth = 5;
+const int tachWidth = 6;
 const int wheelDia = 914;
 
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
@@ -38,7 +38,6 @@ void setup() {
   attachInterrupt(tachPin,isr,RISING);
   attachInterrupt(tachPin,isr,FALLING);
   lcd.begin(16, 2);
-  Serial.begin(9600);
 }
 
 void loop() {
@@ -49,4 +48,6 @@ void loop() {
   oldtime = millis();
   tach = 0;
   writeSpeed(rpm);
+  attachInterrupt(tachPin,isr,RISING);
+  attachInterrupt(tachPin,isr,FALLING);
 }
