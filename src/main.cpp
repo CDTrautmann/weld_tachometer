@@ -4,7 +4,7 @@
 // adding comments later
 //TODO: measure and update the dimensions
 // test on the LCD library
-
+const int tachPin = 0;
 float value=0;
 int tach=0;
 float sfm=0;
@@ -34,15 +34,15 @@ void writeSpeed(float rpm) {
 
 void setup() {
   digitalWrite(2, HIGH);
-  attachInterrupt(0,isr,RISING);
-  attachInterrupt(0,isr,FALLING);
+  attachInterrupt(tachPin,isr,RISING);
+  attachInterrupt(tachPin,isr,FALLING);
   lcd.begin(16, 2);
   Serial.begin(9600);
 }
 
 void loop() {
   delay(500);
-  detachInterrupt(0);
+  detachInterrupt(tachPin);
   time = millis()-oldtime;
   rpm = (tach/time)*(1/tachWidth)*(1/(holdRad*6.2832))*60000;
   oldtime = millis();
