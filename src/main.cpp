@@ -1,6 +1,10 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
+// adding comments later
+//TODO: measure and update the dimensions
+// test on the LCD library
+
 float value=0;
 int tach=0;
 float sfm=0;
